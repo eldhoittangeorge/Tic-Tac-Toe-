@@ -66,16 +66,22 @@ class _InputPageState extends State<InputPage> {
 
   void play(int i, int j) {
     playerPlaying = playerPlaying == "PLAYER 1" ? "PLAYER 2" : "PLAYER 1";
+    // if (winGame() != -1) {
+    // Alert(
+    //         context: context,
+    //         title: "Winner",
+    //         desc: "The winner is " + playerPlaying)
+    //     .show();
+    // } else if (playerStatus[i][j] == 0) {
+    playerStatus[i][j] = playerPlaying == "PLAYER 1" ? 1 : 2;
     if (winGame() != -1) {
       Alert(
               context: context,
               title: "Winner",
               desc: "The winner is " + playerPlaying)
           .show();
-    } else if (playerStatus[i][j] == 0) {
-      playerStatus[i][j] = playerPlaying == "PLAYER 1" ? 1 : 2;
-      print(playerStatus);
     }
+    // }
   }
 
   @override
