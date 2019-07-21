@@ -27,6 +27,7 @@ class _InputPageState extends State<InputPage> {
       [0, 0, 0],
       [0, 0, 0]
     ];
+    playerPlaying = "PLAYER 1";
   }
   // if ((playerStatus[0][0] == playerStatus[0][1]) &&
   //       (playerStatus[0][2] == playerStatus[0][1]) &&
