@@ -28,35 +28,41 @@ class _InputPageState extends State<InputPage> {
       [0, 0, 0]
     ];
   }
+  // if ((playerStatus[0][0] == playerStatus[0][1]) &&
+  //       (playerStatus[0][2] == playerStatus[0][1]) &&
+  //       (playerStatus[0][0] != 0) &&
+  //       (playerStatus[0][1] != 0)) {
+  //     winner = playerStatus[0][0];
+  //   }
+
+  bool checkCondition(int i1, int i2, int j1, int j2, int k1, int k2) {
+    bool correct = false;
+    if ((playerStatus[i1][i2] == playerStatus[j1][j2]) &&
+        (playerStatus[k1][k2] == playerStatus[j1][j2]) &&
+        (playerStatus[i1][i2] != 0) &&
+        (playerStatus[k1][k2] != 0)) {
+      correct = true;
+    }
+    return correct;
+  }
 
   int winGame() {
     int winner;
-    if ((playerStatus[0][0] == playerStatus[0][1]) &&
-        (playerStatus[0][2] == playerStatus[0][1]) &&
-        (playerStatus[0][0] != 0) &&
-        (playerStatus[0][1] != 0)) {
-      print("winner");
+    if (checkCondition(0, 0, 0, 1, 0, 2)) {
       winner = playerStatus[0][0];
-    } else if ((playerStatus[1][0] == playerStatus[1][1]) ==
-        playerStatus[1][2]) {
+    } else if (checkCondition(1, 0, 1, 1, 1, 2)) {
       winner = playerStatus[1][0];
-    } else if ((playerStatus[2][0] == playerStatus[2][1]) ==
-        playerStatus[2][2]) {
+    } else if (checkCondition(2, 0, 2, 1, 2, 2)) {
       winner = playerStatus[2][0];
-    } else if ((playerStatus[0][0] == playerStatus[1][0]) ==
-        playerStatus[2][0]) {
+    } else if (checkCondition(0, 0, 1, 0, 2, 0)) {
       winner = playerStatus[1][0];
-    } else if ((playerStatus[0][1] == playerStatus[1][1]) ==
-        playerStatus[2][1]) {
+    } else if (checkCondition(0, 1, 1, 1, 2, 1)) {
       winner = playerStatus[1][0];
-    } else if ((playerStatus[2][0] == playerStatus[2][1]) ==
-        playerStatus[2][2]) {
+    } else if (checkCondition(2, 0, 2, 1, 2, 2)) {
       winner = playerStatus[1][0];
-    } else if ((playerStatus[0][0] == playerStatus[1][1]) ==
-        playerStatus[2][2]) {
+    } else if (checkCondition(0, 0, 1, 1, 2, 2)) {
       winner = playerStatus[1][0];
-    } else if ((playerStatus[0][2] == playerStatus[1][1]) ==
-        playerStatus[2][0]) {
+    } else if (checkCondition(0, 2, 1, 1, 2, 0)) {
       winner = playerStatus[1][0];
     } else {
       winner = -1;
